@@ -6,7 +6,7 @@ WatchGuard policy XML check utility.
 
 xmlcheck is used to find duplicate aliases and services 
 
-xmlcheck is part of `WatchGuard Toolbox Project <https://watchguard-toolbox-project.gihub.io>`_
+xmlcheck is part of `WatchGuard Toolbox Project <https://watchguard-toolbox-project.github.io>`_
 
 
 
