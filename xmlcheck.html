@@ -100,9 +100,13 @@
 <kbd><span class="option">-p</span>, <span class="option">--listpolicies</span></kbd></td>
 </tr>
 <tr><td>&#160;</td><td>lists all policies</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-s</span>, <span class="option">--listservices</span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>lists all services</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">-s</span>, <span class="option">--services</span></kbd></td>
-<td>lists all services</td></tr>
+<kbd><span class="option">-t</span>, <span class="option">--listtags</span></kbd></td>
+<td>lists all tags</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-a</span>, <span class="option">--alias</span></kbd></td>
 <td>print alias aliasname</td></tr>
@@ -238,18 +242,61 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listservices
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="listing-tags">
+<h2>Listing tags<a class="headerlink" href="#listing-tags" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -t
+$ ./xmlcheck.php -i &lt;inputxml&gt; --listtags
+</pre></div>
+</div>
+<div class="section" id="id7">
+<h3>Description<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>List all tags from the xml file.</p>
+</div>
+<div class="section" id="id8">
+<h3>Options<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
+<td>verbose output</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></td>
+<td>show only unused objects</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h3>Arguments<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>inputfile filename (mandatory)</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="listing-policies">
 <h2>Listing policies<a class="headerlink" href="#listing-policies" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -p
 $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 </pre></div>
 </div>
-<div class="section" id="id7">
-<h3>Description<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Description<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>List all policies from the xml file.</p>
 </div>
-<div class="section" id="id8">
-<h3>Options<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Options<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table class="docutils option-list" frame="void" rules="none">
 <col class="option" />
@@ -262,8 +309,8 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 </table>
 </div></blockquote>
 </div>
-<div class="section" id="id9">
-<h3>Arguments<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Arguments<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table class="docutils option-list" frame="void" rules="none">
 <col class="option" />
@@ -320,10 +367,16 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 <li><a class="reference internal" href="#id6">Arguments</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#listing-policies">Listing policies</a><ul>
+<li><a class="reference internal" href="#listing-tags">Listing tags</a><ul>
 <li><a class="reference internal" href="#id7">Description</a></li>
 <li><a class="reference internal" href="#id8">Options</a></li>
 <li><a class="reference internal" href="#id9">Arguments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#listing-policies">Listing policies</a><ul>
+<li><a class="reference internal" href="#id10">Description</a></li>
+<li><a class="reference internal" href="#id11">Options</a></li>
+<li><a class="reference internal" href="#id12">Arguments</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#api-documentation-download">API documentation &amp; download</a></li>

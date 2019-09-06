@@ -43,7 +43,8 @@ Command summary
 -h, --help    displays short cli help
 -l, --listaliases       lists all aliases
 -p, --listpolicies      lists all policies
--s, --services          lists all services
+-s, --listservices      lists all services
+-t, --listtags          lists all tags
 -a, --alias     print alias aliasname
 --simplexmlout          print SimpleXML structure
                             as read from xmlfile
@@ -106,6 +107,29 @@ Description
 ...........
 
 List all services from the xml file.
+
+Options
+.......
+
+    -v, --verbose           verbose output
+    -u, --unused            show only unused objects
+
+Arguments
+.........
+    -i, --infile filename   inputfile filename (mandatory)
+
+Listing tags
+----------------
+
+.. code-block:: shell
+
+    $ ./xmlcheck.php -i <inputxml> -t
+    $ ./xmlcheck.php -i <inputxml> --listtags
+
+Description
+...........
+
+List all tags from the xml file.
 
 Options
 .......
