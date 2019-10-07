@@ -11,7 +11,7 @@ This project aims to collect useful scripts for managing WatchGuard Fireboxes.
 Tools
 -----
         * `xmlcheck <xmlcheck.html>`_ - listing/finding contents of WatchGuard XML Files
-        * `certificate-push <https://...>`_ 
+        * certificate-push - 
           a tool for pushing certificates to WatchGuard Fireboxes; useful especially in combination with `letsencrypt <https://letsencrypt.org/>`__
 
 Contributors
