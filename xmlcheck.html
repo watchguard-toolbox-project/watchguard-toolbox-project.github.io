@@ -27,6 +27,7 @@
     <script type="text/javascript" src="_static/cloud.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="watchguard-letsencrypt-deploy" href="watchguard-letsencrypt-deploy.html" />
     <link rel="prev" title="WatchGuard Toolbox Project" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -39,6 +40,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="watchguard-letsencrypt-deploy.html" title="watchguard-letsencrypt-deploy"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="index.html" title="WatchGuard Toolbox Project"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
@@ -305,6 +309,12 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 <tr><td class="option-group">
 <kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
 <td>verbose output</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-E</span>, <span class="option">--enabled</span></kbd></td>
+<td>only show enabled policies (= skip disabled policies)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-D</span>, <span class="option">--disabled</span></kbd></td>
+<td>only show disabled policies (= skip enabled policies)</td></tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -330,6 +340,15 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 <ul class="simple">
 <li><a class="reference external" href="https://watchguard-toolbox-project.github.io/xmlcheck/api/">phpdoc api documentation</a></li>
 <li><a class="reference external" href="https://github.com/watchguard-toolbox-project/xmlcheck/">github repository</a></li>
+</ul>
+</div>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>2020-07-27 - v0.4 - added -E and -D for enabled/disabled policies</li>
+<li>2019-09-11 - v0.3 - fixed “–listtags –unused” - now correct if more than one tag per policy</li>
+<li>xxxx-xx-xx   v0.2 - added –listtags</li>
+<li>xxxx-xx-xx   v0.1 - initial release</li>
 </ul>
 </div>
 </div>
@@ -380,6 +399,7 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 </ul>
 </li>
 <li><a class="reference internal" href="#api-documentation-download">API documentation &amp; download</a></li>
+<li><a class="reference internal" href="#changelog">Changelog</a></li>
 </ul>
 </li>
 </ul>
@@ -389,6 +409,11 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
     <h4>Previous page</h4>
     <p class="topless"><a href="index.html"
                           title="Previous page">&larr; WatchGuard Toolbox Project</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="watchguard-letsencrypt-deploy.html"
+                          title="Next page">&rarr; watchguard-letsencrypt-deploy</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -436,6 +461,9 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="watchguard-letsencrypt-deploy.html" title="watchguard-letsencrypt-deploy"
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="index.html" title="WatchGuard Toolbox Project"
              >previous</a> &nbsp; &nbsp;</li>
