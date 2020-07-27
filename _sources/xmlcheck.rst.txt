@@ -159,6 +159,8 @@ Options
 .......
 
     -v, --verbose           verbose output
+    -E, --enabled           only show enabled policies (= skip disabled policies)
+    -D, --disabled          only show disabled policies (= skip enabled policies)
 
 Arguments
 .........
@@ -170,3 +172,11 @@ API documentation & download
 
 * `phpdoc api documentation <https://watchguard-toolbox-project.github.io/xmlcheck/api/>`_
 * `github repository <https://github.com/watchguard-toolbox-project/xmlcheck/>`_
+
+Changelog
+---------
+
+* 2020-07-27 - v0.4 - added -E and -D for enabled/disabled policies 
+* 2019-09-11 - v0.3 - fixed "--listtags --unused" - now correct if more than one tag per policy
+* xxxx-xx-xx   v0.2 - added --listtags
+* xxxx-xx-xx   v0.1 - initial release
