@@ -178,5 +178,5 @@ Changelog
 
 * 2020-07-27 - v0.4 - added -E and -D for enabled/disabled policies 
 * 2019-09-11 - v0.3 - fixed "--listtags --unused" - now correct if more than one tag per policy
-* xxxx-xx-xx   v0.2 - added --listtags
-* xxxx-xx-xx   v0.1 - initial release
+* 2019-09-06   v0.2 - added --listtags
+* 2019-08-24   v0.1 - initial release
