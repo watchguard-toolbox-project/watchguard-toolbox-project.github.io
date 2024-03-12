@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>fail2ban-for-watchguard &#8212; WatchGuard Toolbox Project</title>
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="./" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/cloud.base.js"></script>
+    <script type="text/javascript" src="_static/cloud.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="watchguard-letsencrypt-deploy" href="watchguard-letsencrypt-deploy.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="watchguard-letsencrypt-deploy.html" title="watchguard-letsencrypt-deploy"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">WatchGuard Toolbox Project</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fail2ban-for-watchguard">
+<h1>fail2ban-for-watchguard<a class="headerlink" href="#fail2ban-for-watchguard" title="Permalink to this headline">¶</a></h1>
+<p>SETUP:</p>
+<ul class="simple">
+<li>install ubuntu</li>
+<li>install syslog-ng</li>
+<li>configure syslog to receive/accept syslog/udp and log to directories</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>-----------snip-------add to /etc/syslog-ng/syslog-ng.conf--------------
+<span class="nb">source</span> s_net <span class="o">{</span>  tcp<span class="o">(</span>ip<span class="o">(</span><span class="m">10</span>.10.1.5<span class="o">)</span> port<span class="o">(</span><span class="m">514</span><span class="o">))</span><span class="p">;</span>
+                udp<span class="o">(</span>ip<span class="o">(</span><span class="m">10</span>.10.1.5<span class="o">)</span> port<span class="o">(</span><span class="m">514</span><span class="o">))</span><span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+
+destination d_net_messages <span class="o">{</span> file<span class="o">(</span><span class="s2">&quot;/var/log/hosts/</span><span class="nv">$HOST</span><span class="s2">/syslog&quot;</span><span class="o">)</span><span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+
+log <span class="o">{</span> source<span class="o">(</span>s_net<span class="o">)</span><span class="p">;</span> filter<span class="o">(</span>f_messages<span class="o">)</span><span class="p">;</span> destination<span class="o">(</span>d_net_messages<span class="o">)</span><span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+-----------snip-------add to /etc/syslog-ng/syslog-ng.conf--------------
+</pre></div>
+</div>
+<ul class="simple">
+<li>restart syslog-ng =&gt; service syslog-ng restart</li>
+<li><dl class="first docutils">
+<dt>configure watchguard to log to syslog</dt>
+<dd>policy manager =&gt; setup =&gt; loging =&gt; syslog =&gt; add syslog host ip</dd>
+</dl>
+</li>
+<li>install logrotate if not done =&gt; apt-get logrotate</li>
+<li>configure logrotate to rotate syslogd-files for remote hosts (see above)</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>----------snip---add to /etc/logrotate.d/syslog-ng------------------------
+/var/log/hosts/*/syslog
+<span class="o">{</span>
+        rotate <span class="m">30</span>
+        daily
+        missingok
+        notifempty
+        compress
+        delaycompress
+        postrotate
+                invoke-rc.d syslog-ng reload &gt; /dev/null
+        endscript
+<span class="o">}</span>
+----------snip---add to /etc/logrotate.d/syslog-ng------------------------
+</pre></div>
+</div>
+<ul class="simple">
+<li>install fail2ban:
+apt-get install fail2ban</li>
+<li>add the contents of jail.conf-addon to /etc/fail2ban/jail.conf</li>
+<li>cp action.d-wgsslvpn.conf to /etc/fail2ban/action.d/wgsslvpn.conf</li>
+<li>cp filter.d-wgsslvpn.conf to /etc/fail2ban/filter.d/wgsslvpn.conf</li>
+<li>cp config.sh-dist to config.sh</li>
+<li>edit config.sh and add correct information:
+FW = internal ip of firewall (the linux must connect via ssh to this ip)
+USER = user account to use (must be Device Administrator)
+PASS = passowrd of account USER
+TIME = time to ban - format “minute x second y”, for example “minute 3 second 0”</li>
+<li>install this software to /usr/local/fail2ban-for-watchguard/</li>
+<li>restart fail2ban =&gt; service fail2ban restart</li>
+</ul>
+<p>theoretically you are good to go now.</p>
+<p>verify:
+this should bring show the live logs of your firewall.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/hosts/ip.of.your.firewall/syslog
+</pre></div>
+</div>
+<p>this should show all SSL VPN Logon lines
+.. code-block:: shell</p>
+<blockquote>
+<div><p>tail -f /var/log/hosts/ip.of.your.firewall/syslog | grep “SSL”</p>
+<p>Mar 11 14:44:59 10.10.1.11 M270-NFR-WUE wgcgi[12399]: SSL VPN user <a class="reference external" href="mailto:foo&#37;&#52;&#48;Firebox-DB">foo<span>&#64;</span>Firebox-DB</a> from &lt;ip&gt; was rejected - Unspecified.
+Mar 11 14:45:02 10.10.1.11 M270-NFR-WUE wgcgi[12400]: SSL VPN user <a class="reference external" href="mailto:foo&#37;&#52;&#48;RADIUS">foo<span>&#64;</span>RADIUS</a> from &lt;ip&gt; was rejected - Unspecified.</p>
+</div></blockquote>
+<p>this should show all fail2ban actions
+.. code-block:: shell</p>
+<blockquote>
+<div>tail -f /var/log/fail2ban.log
+2024-03-11 14:44:55,444 fail2ban.filter         [24195]: INFO    [wgsslvpn] Found &lt;ip&gt;
+2024-03-11 14:44:59,509 fail2ban.filter         [24195]: INFO    [wgsslvpn] Found &lt;ip&gt;
+2024-03-11 14:45:02,819 fail2ban.filter         [24195]: INFO    [wgsslvpn] Found &lt;ip&gt;
+2024-03-11 14:45:03,037 fail2ban.actions        [24195]: NOTICE  [wgsslvpn] Ban &lt;ip&gt;
+2024-03-11 14:46:03,119 fail2ban.actions        [24195]: NOTICE  [wgsslvpn] Unban &lt;ip&gt;</div></blockquote>
+<p>on the firewall, using Firebox System Manager:</p>
+<p>the ip should be shown in Firebox System Manager, tab blocked-sites
+or by cli command: show ip blocked-site dynamic</p>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/watchguard-toolbox-project/fail2ban-for-watchguard/">github repository</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">fail2ban-for-watchguard</a><ul>
+<li><a class="reference internal" href="#download">Download</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="watchguard-letsencrypt-deploy.html"
+                          title="Previous page">&larr; watchguard-letsencrypt-deploy</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/fail2ban-for-watchguard.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="watchguard-letsencrypt-deploy.html" title="watchguard-letsencrypt-deploy"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">WatchGuard Toolbox Project</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019-2024, WatchGuard Toolbox Project.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
