@@ -6,32 +6,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>xmlcheck &#8212; WatchGuard Toolbox Project</title>
     <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.36',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" href="./" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/cloud.base.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="watchguard-letsencrypt-deploy" href="watchguard-letsencrypt-deploy.html" />
     <link rel="prev" title="WatchGuard Toolbox Project" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
+  </head><body>
     <div class="relbar-top">
         
     <div class="related" role="navigation" aria-label="related navigation">
@@ -68,7 +61,7 @@
 <div class="section" id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>this php projects needs composer for building the class autoloader and and ensuring the SimpleXML extension is installed.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>~/xmlcheck$ composer install
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/xmlcheck$ composer install
 
         Loading composer repositories with package information
         Updating dependencies <span class="o">(</span>including require-dev<span class="o">)</span>
@@ -83,7 +76,7 @@
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php &lt;options&gt; &lt;args&gt;
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php &lt;options&gt; &lt;args&gt;
 </pre></div>
 </div>
 </div>
@@ -123,7 +116,7 @@ as read from xmlfile</td></tr>
 </div>
 <div class="section" id="listing-aliases">
 <h2>Listing aliases<a class="headerlink" href="#listing-aliases" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -l
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -l
 $ ./xmlcheck.php -i &lt;inputxml&gt; --listaliases
 </pre></div>
 </div>
@@ -166,7 +159,7 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listaliases
 </div>
 <div class="section" id="display-single-alias">
 <h2>Display single alias<a class="headerlink" href="#display-single-alias" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -a &lt;aliasname&gt;
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -a &lt;aliasname&gt;
 </pre></div>
 </div>
 <div class="section" id="id1">
@@ -205,7 +198,7 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listaliases
 </div>
 <div class="section" id="listing-services">
 <h2>Listing services<a class="headerlink" href="#listing-services" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -s
 $ ./xmlcheck.php -i &lt;inputxml&gt; --listservices
 </pre></div>
 </div>
@@ -248,7 +241,7 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listservices
 </div>
 <div class="section" id="listing-tags">
 <h2>Listing tags<a class="headerlink" href="#listing-tags" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -t
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -t
 $ ./xmlcheck.php -i &lt;inputxml&gt; --listtags
 </pre></div>
 </div>
@@ -291,7 +284,7 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listtags
 </div>
 <div class="section" id="listing-policies">
 <h2>Listing policies<a class="headerlink" href="#listing-policies" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -p
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -p
 $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 </pre></div>
 </div>
@@ -424,12 +417,14 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -475,7 +470,7 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, WatchGuard Toolbox Project.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
     <!-- cloud_sptheme 1.4 -->
   </body>
