@@ -68,6 +68,7 @@ this should bring show the live logs of your firewall.
 
 
 this should show all SSL VPN Logon lines
+
 .. code-block:: shell
 
 	tail -f /var/log/hosts/ip.of.your.firewall/syslog | grep "SSL"
@@ -77,6 +78,7 @@ this should show all SSL VPN Logon lines
 
 
 this should show all fail2ban actions
+
 .. code-block:: shell
 
 	tail -f /var/log/fail2ban.log

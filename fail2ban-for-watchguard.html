@@ -112,22 +112,22 @@ this should bring show the live logs of your firewall.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/hosts/ip.of.your.firewall/syslog
 </pre></div>
 </div>
-<p>this should show all SSL VPN Logon lines
-.. code-block:: shell</p>
-<blockquote>
-<div><p>tail -f /var/log/hosts/ip.of.your.firewall/syslog | grep “SSL”</p>
-<p>Mar 11 14:44:59 10.10.1.11 M270-NFR-WUE wgcgi[12399]: SSL VPN user <a class="reference external" href="mailto:foo&#37;&#52;&#48;Firebox-DB">foo<span>&#64;</span>Firebox-DB</a> from &lt;ip&gt; was rejected - Unspecified.
-Mar 11 14:45:02 10.10.1.11 M270-NFR-WUE wgcgi[12400]: SSL VPN user <a class="reference external" href="mailto:foo&#37;&#52;&#48;RADIUS">foo<span>&#64;</span>RADIUS</a> from &lt;ip&gt; was rejected - Unspecified.</p>
-</div></blockquote>
-<p>this should show all fail2ban actions
-.. code-block:: shell</p>
-<blockquote>
-<div>tail -f /var/log/fail2ban.log
-2024-03-11 14:44:55,444 fail2ban.filter         [24195]: INFO    [wgsslvpn] Found &lt;ip&gt;
-2024-03-11 14:44:59,509 fail2ban.filter         [24195]: INFO    [wgsslvpn] Found &lt;ip&gt;
-2024-03-11 14:45:02,819 fail2ban.filter         [24195]: INFO    [wgsslvpn] Found &lt;ip&gt;
-2024-03-11 14:45:03,037 fail2ban.actions        [24195]: NOTICE  [wgsslvpn] Ban &lt;ip&gt;
-2024-03-11 14:46:03,119 fail2ban.actions        [24195]: NOTICE  [wgsslvpn] Unban &lt;ip&gt;</div></blockquote>
+<p>this should show all SSL VPN Logon lines</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/hosts/ip.of.your.firewall/syslog <span class="p">|</span> grep <span class="s2">&quot;SSL&quot;</span>
+
+Mar <span class="m">11</span> <span class="m">14</span>:44:59 <span class="m">10</span>.10.1.11 M270-NFR-WUE wgcgi<span class="o">[</span><span class="m">12399</span><span class="o">]</span>: SSL VPN user foo@Firebox-DB from &lt;ip&gt; was rejected - Unspecified.
+Mar <span class="m">11</span> <span class="m">14</span>:45:02 <span class="m">10</span>.10.1.11 M270-NFR-WUE wgcgi<span class="o">[</span><span class="m">12400</span><span class="o">]</span>: SSL VPN user foo@RADIUS from &lt;ip&gt; was rejected - Unspecified.
+</pre></div>
+</div>
+<p>this should show all fail2ban actions</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/fail2ban.log
+<span class="m">2024</span>-03-11 <span class="m">14</span>:44:55,444 fail2ban.filter         <span class="o">[</span><span class="m">24195</span><span class="o">]</span>: INFO    <span class="o">[</span>wgsslvpn<span class="o">]</span> Found &lt;ip&gt;
+<span class="m">2024</span>-03-11 <span class="m">14</span>:44:59,509 fail2ban.filter         <span class="o">[</span><span class="m">24195</span><span class="o">]</span>: INFO    <span class="o">[</span>wgsslvpn<span class="o">]</span> Found &lt;ip&gt;
+<span class="m">2024</span>-03-11 <span class="m">14</span>:45:02,819 fail2ban.filter         <span class="o">[</span><span class="m">24195</span><span class="o">]</span>: INFO    <span class="o">[</span>wgsslvpn<span class="o">]</span> Found &lt;ip&gt;
+<span class="m">2024</span>-03-11 <span class="m">14</span>:45:03,037 fail2ban.actions        <span class="o">[</span><span class="m">24195</span><span class="o">]</span>: NOTICE  <span class="o">[</span>wgsslvpn<span class="o">]</span> Ban &lt;ip&gt;
+<span class="m">2024</span>-03-11 <span class="m">14</span>:46:03,119 fail2ban.actions        <span class="o">[</span><span class="m">24195</span><span class="o">]</span>: NOTICE  <span class="o">[</span>wgsslvpn<span class="o">]</span> Unban &lt;ip&gt;
+</pre></div>
+</div>
 <p>on the firewall, using Firebox System Manager:</p>
 <p>the ip should be shown in Firebox System Manager, tab blocked-sites
 or by cli command: show ip blocked-site dynamic</p>
