@@ -233,6 +233,7 @@ API documentation & download
 Changelog
 ---------
 
+* 2025-07-07 - v0.8 - added json output and lots of parameters to explore
 * 2020-07-27 - v0.4 - added -E and -D for enabled/disabled policies 
 * 2019-09-11 - v0.3 - fixed "--listtags --unused" - now correct if more than one tag per policy
 * 2019-09-06   v0.2 - added --listtags
