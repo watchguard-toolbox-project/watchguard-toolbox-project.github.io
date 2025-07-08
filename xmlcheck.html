@@ -1,24 +1,32 @@
 
 
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>xmlcheck &#8212; WatchGuard Toolbox Project</title>
-    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="./" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/cloud.base.js"></script>
-    <script type="text/javascript" src="_static/cloud.js"></script>
+    
+    <script src="_static/documentation_options.js?v=18bc1b08"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+
+    
+    
+     
+        <script src="_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.js"></script>
+    
+
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="watchguard-letsencrypt-deploy" href="watchguard-letsencrypt-deploy.html" />
@@ -40,7 +48,8 @@
           <a href="index.html" title="WatchGuard Toolbox Project"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="index.html">WatchGuard Toolbox Project</a> &#187;</li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">xmlcheck</a></li> 
       </ul>
     </div>
     </div>
@@ -51,302 +60,292 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="xmlcheck">
-<h1>xmlcheck<a class="headerlink" href="#xmlcheck" title="Permalink to this headline">¶</a></h1>
+  <section id="xmlcheck">
+<h1>xmlcheck<a class="headerlink" href="#xmlcheck" title="Link to this heading">¶</a></h1>
 <p>WatchGuard policy XML check utility.</p>
 <p>xmlcheck is used to find duplicate aliases and services</p>
 <p>xmlcheck is part of <a class="reference external" href="https://watchguard-toolbox-project.github.io">WatchGuard Toolbox Project</a></p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="prerequisites">
-<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h3>
 <p>this php projects needs composer for building the class autoloader and and ensuring the SimpleXML extension is installed.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/xmlcheck$ composer install
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/xmlcheck$<span class="w"> </span>composer<span class="w"> </span>install
 
-        Loading composer repositories with package information
-        Updating dependencies <span class="o">(</span>including require-dev<span class="o">)</span>
-        Nothing to install or update
-        Writing lock file
-        Generating autoload files
+<span class="w">        </span>Loading<span class="w"> </span>composer<span class="w"> </span>repositories<span class="w"> </span>with<span class="w"> </span>package<span class="w"> </span>information
+<span class="w">        </span>Updating<span class="w"> </span>dependencies<span class="w"> </span><span class="o">(</span>including<span class="w"> </span>require-dev<span class="o">)</span>
+<span class="w">        </span>Nothing<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>or<span class="w"> </span>update
+<span class="w">        </span>Writing<span class="w"> </span>lock<span class="w"> </span>file
+<span class="w">        </span>Generating<span class="w"> </span>autoload<span class="w"> </span>files
 
 ~/xmlcheck$
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php &lt;options&gt; &lt;args&gt;
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>&lt;options&gt;<span class="w"> </span>&lt;args&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="command-summary">
-<h2>Command summary<a class="headerlink" href="#command-summary" title="Permalink to this headline">¶</a></h2>
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></td>
-<td>displays short cli help</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-l</span>, <span class="option">--listaliases</span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>lists all aliases</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-p</span>, <span class="option">--listpolicies</span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>lists all policies</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-s</span>, <span class="option">--listservices</span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>lists all services</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-t</span>, <span class="option">--listtags</span></kbd></td>
-<td>lists all tags</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-a</span>, <span class="option">--alias</span></kbd></td>
-<td>print alias aliasname</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">--simplexmlout</span></kbd></td>
-<td>print SimpleXML structure
-as read from xmlfile</td></tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="listing-aliases">
-<h2>Listing aliases<a class="headerlink" href="#listing-aliases" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -l
-$ ./xmlcheck.php -i &lt;inputxml&gt; --listaliases
+</section>
+<section id="command-summary">
+<h2>Command summary<a class="headerlink" href="#command-summary" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>xmlcheck<span class="w"> </span>v0.8
+
+
+Usage:
+./xmlcheck.php<span class="w"> </span>args<span class="p">|</span>commands
+
+-h,<span class="w"> </span>--help<span class="w">              </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>file
+-i,<span class="w"> </span>--infile<span class="w"> </span>filename<span class="w">   </span>inputfile<span class="w"> </span>filename
+-f,<span class="w"> </span>--file<span class="w"> </span>filename<span class="w">     </span>inputfile<span class="w"> </span>filename
+
+commands:
+--alias<span class="w"> </span>aliasname<span class="w">     </span>print<span class="w"> </span><span class="nb">alias</span><span class="w"> </span>aliasname
+--list-aliases<span class="w">        </span>lists<span class="w"> </span>all<span class="w"> </span>aliases
+--list-policies<span class="w">       </span>lists<span class="w"> </span>all<span class="w"> </span>policies
+--list-types<span class="w">          </span>lists<span class="w"> </span>all<span class="w"> </span>services<span class="o">(</span>policy<span class="w"> </span>types<span class="o">)</span>
+--list-tags<span class="w">           </span>lists<span class="w"> </span>all<span class="w"> </span>tags
+--list-nats<span class="w">           </span>lists<span class="w"> </span>all<span class="w"> </span>nats
+--list-tunnels<span class="w">        </span>lists<span class="w"> </span>all<span class="w"> </span>BOVPN<span class="w"> </span><span class="o">(</span>Gateway-<span class="o">)</span>Tunnels
+--info<span class="w">                </span>lists<span class="w"> </span>general<span class="w"> </span>info
+--warnings<span class="w">            </span>lists<span class="w"> </span>warnings<span class="w"> </span><span class="o">(</span>differences<span class="w"> </span>to<span class="w"> </span>best<span class="w"> </span>practice<span class="o">)</span>
+
+internal<span class="w"> </span>commands:
+--fwcheck<span class="w">             </span>output<span class="w"> </span>full<span class="w"> </span>information
+<span class="w">                      </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>communication<span class="w"> </span>with<span class="w"> </span>fwcheck
+
+filters:
+these<span class="w"> </span>filters<span class="w"> </span>need<span class="w"> </span>--list-policy,<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>multiple<span class="w"> </span><span class="nb">times</span><span class="w"> </span>and<span class="w"> </span>together.
+--filter-name<span class="w"> </span>name<span class="w">            </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>matching<span class="w"> </span>name<span class="w"> </span><span class="o">(</span>regexp<span class="o">)</span>
+--filter-exclude-name<span class="w"> </span>name<span class="w">    </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>not<span class="w"> </span>matching<span class="w"> </span>name<span class="w"> </span><span class="o">(</span>regexp<span class="o">)</span>
+--filter-type<span class="w"> </span><span class="nb">type</span><span class="w">            </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>matching<span class="w"> </span><span class="nb">type</span>
+--filter-exclude-type<span class="w"> </span><span class="nb">type</span><span class="w">    </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>not<span class="w"> </span>matching<span class="w"> </span><span class="nb">type</span>
+--filter-to<span class="w">   </span><span class="nb">alias</span><span class="w">           </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>using<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>to
+--filter-from<span class="w"> </span><span class="nb">alias</span><span class="w">           </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>using<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>from
+--filter-action<span class="w"> </span>action<span class="w">        </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>using<span class="w"> </span>action<span class="w"> </span><span class="o">(</span>Deny<span class="p">|</span>Allow<span class="p">|</span>Proxy<span class="o">)</span>
+--filter-tag<span class="w"> </span>tag<span class="w">              </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>using<span class="w"> </span>tag
+
+these<span class="w"> </span>filters<span class="w"> </span>need<span class="w"> </span>--list-types,<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>multiple<span class="w"> </span><span class="nb">times</span><span class="w"> </span>and<span class="w"> </span>together.
+--filter-type<span class="w"> </span><span class="nb">type</span><span class="w">       </span>only<span class="w"> </span>show<span class="w"> </span>types<span class="w"> </span>matching<span class="w"> </span><span class="nb">type</span>
+--filter-port<span class="w"> </span>port<span class="w">       </span>only<span class="w"> </span>show<span class="w"> </span>types<span class="w"> </span>using<span class="w"> </span>port<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="s1">&#39;25/tcp&#39;</span><span class="o">)</span>
+
+special<span class="w"> </span>filters
+--filter-port-mail<span class="w">       </span>only<span class="w"> </span>show<span class="w"> </span>policies<span class="w"> </span>having<span class="w"> </span>ports
+<span class="w">                           </span><span class="m">25</span>/110/143/465/587/993/995
+
+example:
+<span class="w">    </span>--list-policies
+<span class="w">    </span>--filter-type<span class="w"> </span>HTTPS<span class="w"> </span>--filter-to<span class="w"> </span>Any-External<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--filter-from<span class="w"> </span>Any-Trusted<span class="w"> </span>--filter-from<span class="w"> </span>Any-Optional
+will<span class="w"> </span>display<span class="w"> </span>policies
+<span class="w">    </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span>HTTPS<span class="w"> </span>from<span class="w"> </span><span class="o">(</span>Any-Trusted<span class="w"> </span>or<span class="w"> </span>Any-Optional<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>Any-External
+
+options:
+-v,<span class="w"> </span>--verbose<span class="w">           </span>verbose<span class="w"> </span>output
+-E,<span class="w"> </span>--enabled<span class="w">           </span>only<span class="w"> </span>show<span class="w"> </span>enabled<span class="w"> </span>policies<span class="w"> </span><span class="o">(=</span><span class="w"> </span>skip<span class="w"> </span>disabled<span class="w"> </span>policies<span class="o">)</span>
+-D,<span class="w"> </span>--disabled<span class="w">          </span>only<span class="w"> </span>show<span class="w"> </span>disabled<span class="w"> </span>policies<span class="w"> </span><span class="o">(=</span><span class="w"> </span>skip<span class="w"> </span>enabled<span class="w"> </span>policies<span class="o">)</span>
+-N,<span class="w"> </span>--nospace<span class="w">           </span>change<span class="w"> </span>spaces<span class="w"> </span>to<span class="w"> </span>dots<span class="w"> </span><span class="k">in</span><span class="w"> </span>policy<span class="w"> </span>name<span class="w"> </span>output
+-u,<span class="w"> </span>--unused<span class="w">            </span>only<span class="w"> </span>show<span class="w"> </span>unused<span class="w"> </span><span class="o">(</span>aliases/tags/etc.<span class="o">)</span>
+--json<span class="w">                  </span>currently<span class="w"> </span>only<span class="w"> </span>available<span class="w"> </span>with<span class="w"> </span>info<span class="w"> </span>-<span class="w"> </span>output<span class="w"> </span><span class="k">in</span><span class="w"> </span>json<span class="w"> </span>format
+--json-pretty<span class="w">           </span>same<span class="w"> </span>as<span class="w"> </span>--json,<span class="w"> </span>but<span class="w"> </span>uses<span class="w"> </span>JSON_PRETTY_PRINT
+
+debug:
+--simplexmlout<span class="w">          </span>print<span class="w"> </span>SimpleXML<span class="w"> </span>structure
+<span class="w">                        </span>as<span class="w"> </span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>xmlfile
 </pre></div>
 </div>
-<div class="section" id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="listing-aliases">
+<h2>Listing aliases<a class="headerlink" href="#listing-aliases" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>-l
+$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>--listaliases
+</pre></div>
+</div>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h3>
 <p>List all aliases from the xml file.</p>
-</div>
-<div class="section" id="options">
-<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
-<td>verbose output</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></td>
-<td>show only unused objects</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></dt>
+<dd><p>verbose output</p>
+</dd>
+<dt><kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></dt>
+<dd><p>show only unused objects</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-<div class="section" id="arguments">
-<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>inputfile filename (mandatory)</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></dt>
+<dd><p>inputfile filename (mandatory)</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="display-single-alias">
-<h2>Display single alias<a class="headerlink" href="#display-single-alias" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -a &lt;aliasname&gt;
+</section>
+</section>
+<section id="display-single-alias">
+<h2>Display single alias<a class="headerlink" href="#display-single-alias" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>-a<span class="w"> </span>&lt;aliasname&gt;
 </pre></div>
 </div>
-<div class="section" id="id1">
-<h3>Description<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3>Description<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>Displays one single alias.</p>
-</div>
-<div class="section" id="id2">
-<h3>Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3>Options<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
-<td>verbose output</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></dt>
+<dd><p>verbose output</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-<div class="section" id="id3">
-<h3>Arguments<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h3>Arguments<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>inputfile filename (mandatory)</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></dt>
+<dd><p>inputfile filename (mandatory)</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="listing-services">
-<h2>Listing services<a class="headerlink" href="#listing-services" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -s
-$ ./xmlcheck.php -i &lt;inputxml&gt; --listservices
+</section>
+</section>
+<section id="listing-services">
+<h2>Listing services<a class="headerlink" href="#listing-services" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>-s
+$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>--listservices
 </pre></div>
 </div>
-<div class="section" id="id4">
-<h3>Description<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p>List all services from the xml file.</p>
-</div>
-<div class="section" id="id5">
-<h3>Options<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3>Options<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
-<td>verbose output</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></td>
-<td>show only unused objects</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></dt>
+<dd><p>verbose output</p>
+</dd>
+<dt><kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></dt>
+<dd><p>show only unused objects</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-<div class="section" id="id6">
-<h3>Arguments<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3>Arguments<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>inputfile filename (mandatory)</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></dt>
+<dd><p>inputfile filename (mandatory)</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="listing-tags">
-<h2>Listing tags<a class="headerlink" href="#listing-tags" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -t
-$ ./xmlcheck.php -i &lt;inputxml&gt; --listtags
+</section>
+</section>
+<section id="listing-tags">
+<h2>Listing tags<a class="headerlink" href="#listing-tags" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>-t
+$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>--listtags
 </pre></div>
 </div>
-<div class="section" id="id7">
-<h3>Description<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<section id="id7">
+<h3>Description<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <p>List all tags from the xml file.</p>
-</div>
-<div class="section" id="id8">
-<h3>Options<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id8">
+<h3>Options<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
-<td>verbose output</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></td>
-<td>show only unused objects</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></dt>
+<dd><p>verbose output</p>
+</dd>
+<dt><kbd><span class="option">-u</span>, <span class="option">--unused</span></kbd></dt>
+<dd><p>show only unused objects</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-<div class="section" id="id9">
-<h3>Arguments<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3>Arguments<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>inputfile filename (mandatory)</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></dt>
+<dd><p>inputfile filename (mandatory)</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="listing-policies">
-<h2>Listing policies<a class="headerlink" href="#listing-policies" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./xmlcheck.php -i &lt;inputxml&gt; -p
-$ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
+</section>
+</section>
+<section id="listing-policies">
+<h2>Listing policies<a class="headerlink" href="#listing-policies" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>-p
+$<span class="w"> </span>./xmlcheck.php<span class="w"> </span>-i<span class="w"> </span>&lt;inputxml&gt;<span class="w"> </span>--listpolicies
 </pre></div>
 </div>
-<div class="section" id="id10">
-<h3>Description<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<section id="id10">
+<h3>Description<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>List all policies from the xml file.</p>
-</div>
-<div class="section" id="id11">
-<h3>Options<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id11">
+<h3>Options<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
-<td>verbose output</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-E</span>, <span class="option">--enabled</span></kbd></td>
-<td>only show enabled policies (= skip disabled policies)</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-D</span>, <span class="option">--disabled</span></kbd></td>
-<td>only show disabled policies (= skip enabled policies)</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></dt>
+<dd><p>verbose output</p>
+</dd>
+<dt><kbd><span class="option">-E</span>, <span class="option">--enabled</span></kbd></dt>
+<dd><p>only show enabled policies (= skip disabled policies)</p>
+</dd>
+<dt><kbd><span class="option">-D</span>, <span class="option">--disabled</span></kbd></dt>
+<dd><p>only show disabled policies (= skip enabled policies)</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-<div class="section" id="id12">
-<h3>Arguments<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id12">
+<h3>Arguments<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <blockquote>
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></td>
-</tr>
-<tr><td>&#160;</td><td>inputfile filename (mandatory)</td></tr>
-</tbody>
-</table>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-i</span>, <span class="option">--infile <var>filename</var></span></kbd></dt>
+<dd><p>inputfile filename (mandatory)</p>
+</dd>
+</dl>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="api-documentation-download">
-<h2>API documentation &amp; download<a class="headerlink" href="#api-documentation-download" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="api-documentation-download">
+<h2>API documentation &amp; download<a class="headerlink" href="#api-documentation-download" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://watchguard-toolbox-project.github.io/xmlcheck/api/">phpdoc api documentation</a></li>
-<li><a class="reference external" href="https://github.com/watchguard-toolbox-project/xmlcheck/">github repository</a></li>
+<li><p><a class="reference external" href="https://watchguard-toolbox-project.github.io/xmlcheck/api/">phpdoc api documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/watchguard-toolbox-project/xmlcheck/">github repository</a></p></li>
 </ul>
-</div>
-<div class="section" id="changelog">
-<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li>2020-07-27 - v0.4 - added -E and -D for enabled/disabled policies</li>
-<li>2019-09-11 - v0.3 - fixed “–listtags –unused” - now correct if more than one tag per policy</li>
-<li>2019-09-06   v0.2 - added –listtags</li>
-<li>2019-08-24   v0.1 - initial release</li>
+<li><p>2020-07-27 - v0.4 - added -E and -D for enabled/disabled policies</p></li>
+<li><p>2019-09-11 - v0.3 - fixed “–listtags –unused” - now correct if more than one tag per policy</p></li>
+<li><p>2019-09-06   v0.2 - added –listtags</p></li>
+<li><p>2019-08-24   v0.1 - initial release</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -416,17 +415,15 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -463,14 +460,15 @@ $ ./xmlcheck.php -i &lt;inputxml&gt; --listpolicies
           <a href="index.html" title="WatchGuard Toolbox Project"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="index.html">WatchGuard Toolbox Project</a> &#187;</li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">xmlcheck</a></li> 
       </ul>
     </div>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019-2024, WatchGuard Toolbox Project.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    &#169; Copyright 2019-2024, WatchGuard Toolbox Project.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
     <!-- cloud_sptheme 1.4 -->
   </body>

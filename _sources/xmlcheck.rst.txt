@@ -40,15 +40,72 @@ Usage
 Command summary
 ---------------
 
--h, --help    displays short cli help
--l, --listaliases       lists all aliases
--p, --listpolicies      lists all policies
--s, --listservices      lists all services
--t, --listtags          lists all tags
--a, --alias     print alias aliasname
---simplexmlout          print SimpleXML structure
-                            as read from xmlfile
+.. code-block:: shell
 
+    xmlcheck v0.8
+
+
+    Usage: 
+    ./xmlcheck.php args|commands
+
+    -h, --help              this help file
+    -i, --infile filename   inputfile filename
+    -f, --file filename     inputfile filename
+
+    commands:
+    --alias aliasname     print alias aliasname
+    --list-aliases        lists all aliases
+    --list-policies       lists all policies
+    --list-types          lists all services(policy types)
+    --list-tags           lists all tags
+    --list-nats           lists all nats
+    --list-tunnels        lists all BOVPN (Gateway-)Tunnels
+    --info                lists general info
+    --warnings            lists warnings (differences to best practice)
+    
+    internal commands:
+    --fwcheck             output full information 
+                          used for communication with fwcheck     
+        
+    filters:
+    these filters need --list-policy, may be used multiple times and together.
+    --filter-name name            only show policies matching name (regexp)
+    --filter-exclude-name name    only show policies not matching name (regexp)
+    --filter-type type            only show policies matching type 
+    --filter-exclude-type type    only show policies not matching type 
+    --filter-to   alias           only show policies using alias in to
+    --filter-from alias           only show policies using alias in from
+    --filter-action action        only show policies using action (Deny|Allow|Proxy)
+    --filter-tag tag              only show policies using tag
+    
+    these filters need --list-types, may be used multiple times and together.
+    --filter-type type       only show types matching type
+    --filter-port port       only show types using port (e.g. '25/tcp')
+    
+    special filters
+    --filter-port-mail       only show policies having ports 
+                               25/110/143/465/587/993/995 
+    
+    example: 
+        --list-policies
+        --filter-type HTTPS --filter-to Any-External \
+        --filter-from Any-Trusted --filter-from Any-Optional
+    will display policies
+        of type HTTPS from (Any-Trusted or Any-Optional) to Any-External
+            
+    options:
+    -v, --verbose           verbose output
+    -E, --enabled           only show enabled policies (= skip disabled policies)
+    -D, --disabled          only show disabled policies (= skip enabled policies)
+    -N, --nospace           change spaces to dots in policy name output
+    -u, --unused            only show unused (aliases/tags/etc.)
+    --json                  currently only available with info - output in json format
+    --json-pretty           same as --json, but uses JSON_PRETTY_PRINT
+    
+    debug:
+    --simplexmlout          print SimpleXML structure 
+                            as read from xmlfile
+    
 Listing aliases
 ---------------
 
